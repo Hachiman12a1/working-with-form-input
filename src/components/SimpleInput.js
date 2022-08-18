@@ -11,13 +11,16 @@ const SimpleInput = (props) => {
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
+    if (enteredName.trim() === "") {
+      return;
+    }
     console.log(enteredName);
 
     const enteredValue = nameInputRef.current.value;
     console.log(enteredValue);
 
     // nameInputRef.current.value = '' => NOT IDEAL, DON'T MANIPULATE THE DOM
-    setEnteredName('')
+    setEnteredName("");
   };
   return (
     <form onSubmit={formSubmitHandler}>
@@ -28,7 +31,7 @@ const SimpleInput = (props) => {
           type="text"
           id="name"
           onChange={nameInputChangeHandler}
-          value = {enteredName}
+          value={enteredName}
         />
       </div>
       <div className="form-actions">
